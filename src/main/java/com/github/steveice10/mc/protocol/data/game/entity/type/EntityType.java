@@ -126,11 +126,12 @@ public enum EntityType {
     ZOMBIE_VILLAGER,
     ZOMBIFIED_PIGLIN,
     PLAYER,
-    FISHING_BOBBER;
+    FISHING_BOBBER,
+    UNKNOWN;
 
     private static final EntityType[] VALUES = values();
 
     public static EntityType from(int id) {
-        return VALUES[id];
+        return VALUES[id] != null ? VALUES[id] : UNKNOWN;
     }
 }

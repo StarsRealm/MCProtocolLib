@@ -29,7 +29,8 @@ public enum RecipeType {
     STONECUTTING,
     SMITHING_TRANSFORM,
     SMITHING_TRIM,
-    CRAFTING_DECORATED_POT;
+    CRAFTING_DECORATED_POT,
+    UNKNOWN;
 
     private final String resourceLocation;
 
@@ -44,7 +45,7 @@ public enum RecipeType {
     private static final Map<String, RecipeType> VALUES = new HashMap<>();
 
     public static RecipeType from(String resourceLocation) {
-        return VALUES.get(resourceLocation);
+        return VALUES.get(resourceLocation) != null ? VALUES.get(resourceLocation) : UNKNOWN;
     }
 
     static {

@@ -5,10 +5,7 @@ import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
 import com.github.steveice10.mc.protocol.data.game.entity.object.*;
 import com.github.steveice10.mc.protocol.data.game.entity.type.EntityType;
 import io.netty.buffer.ByteBuf;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.With;
+import lombok.*;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -21,6 +18,7 @@ public class ClientboundAddEntityPacket implements MinecraftPacket {
 
     private final int entityId;
     private final @NonNull UUID uuid;
+    private final int entityTypeId;
     private final @NonNull EntityType type;
     private final @NonNull ObjectData data;
     private final double x;
@@ -35,24 +33,25 @@ public class ClientboundAddEntityPacket implements MinecraftPacket {
 
     public ClientboundAddEntityPacket(int entityId, @NonNull UUID uuid, @NonNull EntityType type,
                                       double x, double y, double z, float yaw, float pitch, float headYaw) {
-        this(entityId, uuid, type, EMPTY_DATA, x, y, z, yaw, headYaw, pitch, 0, 0, 0);
+        this(entityId, uuid, type.ordinal(), type, EMPTY_DATA, x, y, z, yaw, headYaw, pitch, 0, 0, 0);
     }
 
     public ClientboundAddEntityPacket(int entityId, @NonNull UUID uuid, @NonNull EntityType type, @NonNull ObjectData data,
                                       double x, double y, double z, float yaw, float pitch, float headYaw) {
-        this(entityId, uuid, type, data, x, y, z, yaw, headYaw, pitch, 0, 0, 0);
+        this(entityId, uuid, type.ordinal(), type, data, x, y, z, yaw, headYaw, pitch, 0, 0, 0);
     }
 
     public ClientboundAddEntityPacket(int entityId, @NonNull UUID uuid, @NonNull EntityType type,
                                       double x, double y, double z, float yaw, float pitch,
                                       float headYaw, double motionX, double motionY, double motionZ) {
-        this(entityId, uuid, type, EMPTY_DATA, x, y, z, yaw, headYaw, pitch, motionX, motionY, motionZ);
+        this(entityId, uuid, type.ordinal(), type, EMPTY_DATA, x, y, z, yaw, headYaw, pitch, motionX, motionY, motionZ);
     }
 
     public ClientboundAddEntityPacket(ByteBuf in, MinecraftCodecHelper helper) throws IOException {
         this.entityId = helper.readVarInt(in);
         this.uuid = helper.readUUID(in);
-        this.type = EntityType.from(helper.readVarInt(in));
+        this.entityTypeId = helper.readVarInt(in);
+        this.type = EntityType.from(entityId);
         this.x = in.readDouble();
         this.y = in.readDouble();
         this.z = in.readDouble();

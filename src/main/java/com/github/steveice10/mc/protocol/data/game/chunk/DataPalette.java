@@ -13,7 +13,7 @@ public class DataPalette {
     /*
      * @deprecated globalPaletteBits is no longer in use.
      */
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public static final int GLOBAL_PALETTE_BITS_PER_ENTRY = 14;
 
     private @NonNull Palette palette;
@@ -23,7 +23,7 @@ public class DataPalette {
     /*
      * @deprecated globalPaletteBits is no longer in use, use {@link #DataPalette(Palette, BitStorage, PaletteType)} instead.
      */
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public DataPalette(@NonNull Palette palette, BitStorage storage, PaletteType paletteType, int globalPaletteBits) {
         this(palette, storage, paletteType);
     }
@@ -39,7 +39,7 @@ public class DataPalette {
     /*
      * @deprecated globalPaletteBits is no longer in use, use {@link #createForChunk()} instead.
      */
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public static DataPalette createForChunk(int globalPaletteBits) {
         return createForChunk();
     }
@@ -47,7 +47,7 @@ public class DataPalette {
     /*
      * @deprecated globalPaletteBits is no longer in use, use {@link #createForBiome()} instead.
      */
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public static DataPalette createForBiome(int globalPaletteBits) {
         return createForBiome();
     }
@@ -64,7 +64,7 @@ public class DataPalette {
     /*
      * @deprecated globalPaletteBits is no longer in use, use {@link #createEmpty(PaletteType)} instead.
      */
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public static DataPalette createEmpty(PaletteType paletteType, int globalPaletteBits) {
         return createEmpty(paletteType);
     }

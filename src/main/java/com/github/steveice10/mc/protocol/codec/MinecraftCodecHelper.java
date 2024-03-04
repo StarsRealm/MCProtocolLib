@@ -751,7 +751,7 @@ public class MinecraftCodecHelper extends BasePacketCodecHelper {
     /**
      * @deprecated globalPaletteBits is no longer in use, use {@link #readDataPalette(ByteBuf, PaletteType)} instead.
      */
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public DataPalette readDataPalette(ByteBuf buf, PaletteType paletteType, int globalPaletteBits) throws IOException {
         return this.readDataPalette(buf, paletteType);
     }
@@ -802,7 +802,7 @@ public class MinecraftCodecHelper extends BasePacketCodecHelper {
     /**
      * @deprecated globalBiomePaletteBits is no longer in use, use {@link #readChunkSection(ByteBuf)} instead.
      */
-    @Deprecated(forRemoval = true)
+    @Deprecated
     public ChunkSection readChunkSection(ByteBuf buf, int globalBiomePaletteBits) throws IOException {
         return this.readChunkSection(buf);
     }

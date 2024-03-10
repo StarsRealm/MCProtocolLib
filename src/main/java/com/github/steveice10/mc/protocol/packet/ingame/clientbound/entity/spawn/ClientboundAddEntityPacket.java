@@ -51,7 +51,7 @@ public class ClientboundAddEntityPacket implements MinecraftPacket {
         this.entityId = helper.readVarInt(in);
         this.uuid = helper.readUUID(in);
         this.entityTypeId = helper.readVarInt(in);
-        this.type = EntityType.from(entityId);
+        this.type = EntityType.from(entityTypeId);
         this.x = in.readDouble();
         this.y = in.readDouble();
         this.z = in.readDouble();

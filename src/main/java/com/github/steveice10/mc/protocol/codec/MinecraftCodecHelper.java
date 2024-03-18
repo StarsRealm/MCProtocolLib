@@ -79,13 +79,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.ObjIntConsumer;
@@ -907,5 +901,27 @@ public class MinecraftCodecHelper extends BasePacketCodecHelper {
 
     public void setRegistry(CompoundTag registry) {
         this.registry = registry;
+    }
+
+    public Map<String, Integer> readStringIntMap(ByteBuf buf) {
+        Map<String, Integer> map = new HashMap<>();
+        int size = readVarInt(buf);
+        for (int i = 0; i < size; i++) {
+            String name = readString(buf);
+            Integer value = readVarInt(buf);
+            map.put(name, value);
+        }
+        return map;
+    }
+
+    public Map<String, Float> readStringFloatMap(ByteBuf buf) {
+        Map<String, Float> map = new HashMap<>();
+        int size = readVarInt(buf);
+        for (int i = 0; i < size; i++) {
+            String name = readString(buf);
+            float value = buf.readFloat();
+            map.put(name, value);
+        }
+        return map;
     }
 }

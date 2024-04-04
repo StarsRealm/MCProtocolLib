@@ -62,7 +62,7 @@ lombok {
 }
 
 group = "com.github.steveice10"
-version = "1.20.4-5-SNAPSHOT"
+version = "1.20.4-6-SNAPSHOT"
 description = "MCProtocolLib is a simple library for communicating with Minecraft clients and servers."
 
 java {

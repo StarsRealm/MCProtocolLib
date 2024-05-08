@@ -1,3 +1,5 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 dependencyResolutionManagement {
     repositories {
         maven("https://repo.opencollab.dev/maven-releases/") {
@@ -5,10 +7,6 @@ dependencyResolutionManagement {
         }
         maven("https://repo.opencollab.dev/maven-snapshots/") {
             name = "opencollab-snapshots"
-        }
-        // fixme: remove when adventure 4.15.0 releases
-        maven("https://s01.oss.sonatype.org/content/repositories/snapshots/") {
-            name = "sonatype-snapshots"
         }
         maven("https://jitpack.io") {
             name = "jitpack"
@@ -19,4 +17,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "mcprotocollib"
 
-include("example")
+include("protocol", "example")

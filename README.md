@@ -4,13 +4,16 @@ MCProtocolLib is a simple library for communicating with Minecraft clients and s
 
 ## Example Code
 
-See the [example](https://github.com/GeyserMC/MCProtocolLib/tree/master/example/src/main/java/com/github/steveice10/mc/protocol/test) folder for sample usage.
+See the [example](https://github.com/GeyserMC/MCProtocolLib/tree/master/example/src/main/java/org/geysermc/mcprotocollib) folder for sample usage.
 
 ## Adding as a Dependency
 
-MCProtocolLib builds are published to the [Open Collaboration repository](https://repo.opencollab.dev/ui/packages/gav:%2F%2Fcom.github.steveice10:mcprotocollib). Follow the below steps to add MCProtocolLib as a dependency to your project.
+MCProtocolLib builds are published to the [Open Collaboration repository](https://repo.opencollab.dev/ui/packages/gav:%2F%2Forg.geysermc:mcprotocollib).
+Follow the below steps to add MCProtocolLib as a dependency to your project.
 
 ### Maven
+
+#### Add the Repository
 
 ```xml
 <repositories>
@@ -19,25 +22,56 @@ MCProtocolLib builds are published to the [Open Collaboration repository](https:
         <url>https://repo.opencollab.dev/maven-releases/</url>
     </repository>
 </repositories>
+```
 
+#### Add the Dependency
+
+```xml
 <dependency>
-    <groupId>com.github.steveice10</groupId>
-    <artifactId>mcprotocollib</artifactId>
+    <groupId>org.geysermc.mcprotocollib</groupId>
+    <artifactId>protocol</artifactId>
     <version>(version here)</version>
 </dependency>
 ```
 
-### Gradle
+### Gradle (Groovy DSL)
+
+#### Add the Repository
 
 ```groovy
-allprojects {
-    repositories {
-        maven { url 'https://repo.opencollab.dev/maven-releases/' }
+repositories {
+    maven { 
+        name 'opencollab'
+        url 'https://repo.opencollab.dev/maven-releases/'
     }
 }
+```
 
+#### Add the Dependency
+
+```groovy
 dependencies {
-    implementation 'com.github.steveice10:mcprotocollib:(version here)'
+    implementation 'org.geysermc.mcprotocollib:protocol:(version here)'
+}
+```
+
+### Gradle (Kotlin DSL)
+
+#### Add the Repository
+
+```kotlin
+repositories {
+    maven("https://repo.opencollab.dev/maven-releases/") {
+        name = "opencollab"
+    }
+}
+```
+
+#### Add the Dependency
+
+```kotlin
+dependencies {
+    implementation("org.geysermc.mcprotocollib:protocol:(version here)")
 }
 ```
 
@@ -51,7 +85,7 @@ You can find the Javadocs for MCProtocolLib [on opencollab](https://ci.opencolla
 
 ## Building the Source
 
-MCProtocolLib uses Maven to manage dependencies. To build the source code, run `mvn clean install` in the project root directory.
+MCProtocolLib uses Gradle to manage dependencies. To build the source code, run `./gradlew clean build` in the project root directory.
 
 ## Support and Development
 
@@ -59,4 +93,4 @@ Please join [the GeyserMC Discord server](https://discord.gg/geysermc) and visit
 
 ## License
 
-MCProtocolLib is licensed under the **[MIT license](https://opensource.org/license/mit/)**.
+MCProtocolLib is licensed under the **[MIT license](https://opensource.org/license/mit)**.

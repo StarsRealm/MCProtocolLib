@@ -16,6 +16,8 @@ import org.geysermc.mcprotocollib.protocol.data.game.entity.object.ProjectileDat
 import org.geysermc.mcprotocollib.protocol.data.game.entity.object.WardenData;
 import org.geysermc.mcprotocollib.protocol.data.game.entity.type.EntityType;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Data

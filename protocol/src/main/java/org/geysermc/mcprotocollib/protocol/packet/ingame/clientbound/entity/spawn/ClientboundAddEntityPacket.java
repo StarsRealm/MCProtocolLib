@@ -40,23 +40,21 @@ public class ClientboundAddEntityPacket implements MinecraftPacket {
     private final double motionX;
     private final double motionY;
     private final double motionZ;
-    private final Map<String, Integer> intEntityProperty;
-    private final Map<String, Float> floatEntityProperty;
 
     public ClientboundAddEntityPacket(int entityId, @NonNull UUID uuid, @NonNull EntityType type,
                                       double x, double y, double z, float yaw, float pitch, float headYaw) {
-        this(entityId, uuid, type.ordinal(), type, EMPTY_DATA, x, y, z, yaw, headYaw, pitch, 0, 0, 0, new HashMap<>(), new HashMap<>());
+        this(entityId, uuid, type.ordinal(), type, EMPTY_DATA, x, y, z, yaw, headYaw, pitch, 0, 0, 0);
     }
 
     public ClientboundAddEntityPacket(int entityId, @NonNull UUID uuid, @NonNull EntityType type, @NonNull ObjectData data,
                                       double x, double y, double z, float yaw, float pitch, float headYaw) {
-        this(entityId, uuid, type.ordinal(), type, data, x, y, z, yaw, headYaw, pitch, 0, 0, 0, new HashMap<>(), new HashMap<>());
+        this(entityId, uuid, type.ordinal(), type, data, x, y, z, yaw, headYaw, pitch, 0, 0, 0);
     }
 
     public ClientboundAddEntityPacket(int entityId, @NonNull UUID uuid, @NonNull EntityType type,
                                       double x, double y, double z, float yaw, float pitch,
                                       float headYaw, double motionX, double motionY, double motionZ) {
-        this(entityId, uuid, type.ordinal(), type, EMPTY_DATA, x, y, z, yaw, headYaw, pitch, motionX, motionY, motionZ, new HashMap<>(), new HashMap<>());
+        this(entityId, uuid, type.ordinal(), type, EMPTY_DATA, x, y, z, yaw, headYaw, pitch, motionX, motionY, motionZ);
     }
 
     public ClientboundAddEntityPacket(ByteBuf in, MinecraftCodecHelper helper) {
@@ -93,8 +91,6 @@ public class ClientboundAddEntityPacket implements MinecraftPacket {
         this.motionX = in.readShort() / 8000D;
         this.motionY = in.readShort() / 8000D;
         this.motionZ = in.readShort() / 8000D;
-        this.intEntityProperty = helper.readStringIntMap(in);
-        this.floatEntityProperty = helper.readStringFloatMap(in);
     }
 
     @Override

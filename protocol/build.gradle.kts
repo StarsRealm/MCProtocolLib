@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
 }
 
-version = "1.20.6-2-SNAPSHOT"
+version = "1.20.6-3-SNAPSHOT"
 description = "MCProtocolLib is a simple library for communicating with Minecraft clients and servers."
 
 dependencies {

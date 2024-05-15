@@ -1051,6 +1051,28 @@ public class MinecraftCodecHelper extends BasePacketCodecHelper {
         this.registry = registry;
     }
 
+    public Map<String, String> readStringStringMap(ByteBuf buf) {
+        Map<String, String> map = new HashMap<>();
+        int size = readVarInt(buf);
+        for (int i = 0; i < size; i++) {
+            String name = readString(buf);
+            String value = readString(buf);
+            map.put(name, value);
+        }
+        return map;
+    }
+
+    public Map<String, Boolean> readStringBooleanMap(ByteBuf buf) {
+        Map<String, Boolean> map = new HashMap<>();
+        int size = readVarInt(buf);
+        for (int i = 0; i < size; i++) {
+            String name = readString(buf);
+            boolean value = buf.readBoolean();
+            map.put(name, value);
+        }
+        return map;
+    }
+
     public Map<String, Integer> readStringIntMap(ByteBuf buf) {
         Map<String, Integer> map = new HashMap<>();
         int size = readVarInt(buf);

@@ -149,7 +149,7 @@ public enum EntityType {
     private static final EntityType[] VALUES = values();
 
     public static EntityType from(int id) {
-        if(id > VALUES.length) {
+        if(id >= VALUES.length || id < 0) {
             return UNKNOWN;
         }
         return VALUES[id] != null ? VALUES[id] : UNKNOWN;

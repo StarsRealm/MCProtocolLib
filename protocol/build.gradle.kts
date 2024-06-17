@@ -1,5 +1,6 @@
 plugins {
     id("mcprotocollib.publish-conventions")
+    jacoco
     `maven-publish`
 }
 
@@ -32,6 +33,18 @@ dependencies {
     // Test dependencies
     testImplementation(libs.junit.jupiter)
 }
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
+
 
 publishing {
     repositories {
